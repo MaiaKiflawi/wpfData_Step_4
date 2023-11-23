@@ -12,8 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using wpfData_Step_4.Model;
-using wpfData_Step_4.ViewModel;
+using wpfData_Step_4.ServiceReferenceSnacks;
 
 namespace wpfData_Step_4
 {
@@ -22,11 +21,12 @@ namespace wpfData_Step_4
     /// </summary>
     public partial class UsersUserControl1 : UserControl
     {
+        private ServiceSnackClient snacksService;
         public UsersUserControl1()
         {
             InitializeComponent();
-            UserDB userDB = new UserDB();
-            UserList list = userDB.SelectAll();
+            snacksService = new ServiceSnackClient();
+            UserList list = snacksService.GetAllUsers();
             usersListView.ItemsSource = list;
         }
     }

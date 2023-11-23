@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F182D7F0-167F-49BD-A1E9-0F3394BAE74E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>wpfData</RootNamespace>
-    <AssemblyName>wpfData</AssemblyName>
+    <RootNamespace>wpfData_Step_4</RootNamespace>
+    <AssemblyName>wpfData_Step_4</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,18 +57,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connected Services\ServiceReferenceSnacks\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Snack.cs" />
-    <Compile Include="Model\User.cs" />
     <Compile Include="UsersUserControl1.xaml.cs">
       <DependentUpon>UsersUserControl1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\BaseDB.cs" />
-    <Compile Include="ViewModel\CityDB.cs" />
-    <Compile Include="ViewModel\SnackDB.cs" />
-    <Compile Include="ViewModel\UserDB.cs" />
     <Page Include="CityUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,8 +97,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\BaseEntity.cs" />
-    <Compile Include="Model\City.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -115,21 +114,50 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Model\ModelDiagram.cd" />
+    <None Include="Connected Services\ServiceReferenceSnacks\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceSnacks\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceSnacks\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceSnacks\ServiceSnack.wsdl" />
+    <None Include="Connected Services\ServiceReferenceSnacks\wpfData_Step_4.ServiceReferenceSnacks.CityList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceSnacks\wpfData_Step_4.ServiceReferenceSnacks.SnackList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceSnacks\wpfData_Step_4.ServiceReferenceSnacks.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceSnacks\wpfData_Step_4.ServiceReferenceSnacks.UserList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="ViewModel\ViewModelDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="ViewModel\SchoolDB.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceSnacks\item.disco" />
+    <None Include="Connected Services\ServiceReferenceSnacks\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceReferenceSnacks\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceReferenceSnacks\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceReferenceSnacks\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
